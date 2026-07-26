@@ -37,24 +37,34 @@ const observer = new IntersectionObserver(
 
 sections.forEach((section) => observer.observe(section));
 
-// Video embed fallback — el link de respaldo está visible por defecto en el HTML.
-// Bloqueadores como Brave Shields o uBlock cancelan el request del iframe pero
-// igual disparan "load" (queda navegando a "about:blank"), así que ese evento
-// por sí solo no sirve para saber si cargó. En vez de eso, al disparar "load"
-// se intenta leer contentDocument: si es accesible, el iframe nunca salió de
-// about:blank (bloqueado); si el acceso lanza una excepción cross-origin, sí
-// navegó de verdad a linkedin.com y ahí sí se oculta el respaldo.
+// Video embed fallback — el link de respaldo vive fuera de .video-embed y está
+// visible por defecto en el HTML (ver comentario junto al markup). Solo se
+// oculta si se confirma una carga real, y esa confirmación se intenta por dos
+// vías independientes porque ningún evento es 100% confiable con bloqueadores:
+//
+// 1) Evento "load": algunos bloqueadores cancelan el request pero igual
+//    disparan "load" (el iframe se queda en about:blank), así que el evento
+//    por sí solo no basta — se revisa contentDocument para distinguirlo.
+// 2) Timeout fijo de 3s: cubre el caso donde el bloqueador cancela la petición
+//    sin disparar "load" en absoluto. Como el respaldo ya es visible por
+//    defecto, este timeout no "muestra" nada — solo vuelve a intentar la
+//    misma verificación por si la carga real ya ocurrió mientras tanto.
 const videoFrame = document.getElementById('video-embed-frame');
 const videoFallback = document.getElementById('video-embed-fallback');
 
 if (videoFrame && videoFallback) {
-  videoFrame.addEventListener('load', () => {
+  const hideFallbackIfReallyLoaded = () => {
     let blocked = true;
     try {
+      // contentDocument accesible = sigue en about:blank = bloqueado.
+      // Acceso que lanza excepción cross-origin = navegó de verdad = cargó.
       blocked = Boolean(videoFrame.contentDocument);
     } catch (e) {
       blocked = false;
     }
     if (!blocked) videoFallback.hidden = true;
-  });
+  };
+
+  videoFrame.addEventListener('load', hideFallbackIfReallyLoaded);
+  setTimeout(hideFallbackIfReallyLoaded, 3000);
 }

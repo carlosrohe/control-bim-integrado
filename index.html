@@ -255,15 +255,21 @@
               allowfullscreen
               title="Publicación integrada"
             ></iframe>
-            <p class="video-embed__fallback" id="video-embed-fallback">
-              ¿No ves el video?
-              <a
-                href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7480696826787143680/"
-                target="_blank"
-                rel="noopener"
-              >Míralo directo en LinkedIn</a>.
-            </p>
           </div>
+          <!--
+            Deliberadamente FUERA de .video-embed: algunos bloqueadores ocultan
+            todo el contenedor padre de un iframe bloqueado (no solo el iframe),
+            para no dejar cajas vacías. Si este párrafo viviera dentro de ese
+            contenedor, desaparecería con él aunque su propio "hidden" sea false.
+          -->
+          <p class="video-embed__fallback" id="video-embed-fallback">
+            ¿No ves el video?
+            <a
+              href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7480696826787143680/"
+              target="_blank"
+              rel="noopener"
+            >Míralo directo en LinkedIn</a>.
+          </p>
         </div>
 
         <div class="section-block">
