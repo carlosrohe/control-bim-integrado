@@ -36,3 +36,25 @@ const observer = new IntersectionObserver(
 );
 
 sections.forEach((section) => observer.observe(section));
+
+// Video embed fallback — bloqueadores de anuncios (Brave Shields, uBlock, etc.)
+// suelen cancelar el request del iframe sin disparar "error", así que se usa
+// un timeout: si "load" no llega a tiempo, se asume bloqueado.
+const videoFrame = document.getElementById('video-embed-frame');
+const videoFallback = document.getElementById('video-embed-fallback');
+
+if (videoFrame && videoFallback) {
+  let videoLoaded = false;
+
+  videoFrame.addEventListener('load', () => {
+    videoLoaded = true;
+  });
+
+  videoFrame.addEventListener('error', () => {
+    videoFallback.hidden = false;
+  });
+
+  setTimeout(() => {
+    if (!videoLoaded) videoFallback.hidden = false;
+  }, 3000);
+}

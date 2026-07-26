@@ -529,6 +529,18 @@ body {
   border: 0;
 }
 
+.video-embed__fallback {
+  margin-top: 14px;
+  font-size: 13.5px;
+  color: var(--color-text-dim);
+}
+
+.video-embed__fallback a {
+  color: var(--color-copper);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 /* ==========================================================================
    El sistema
    ========================================================================== */
