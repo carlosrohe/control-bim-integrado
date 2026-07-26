@@ -37,24 +37,24 @@ const observer = new IntersectionObserver(
 
 sections.forEach((section) => observer.observe(section));
 
-// Video embed fallback — bloqueadores de anuncios (Brave Shields, uBlock, etc.)
-// suelen cancelar el request del iframe sin disparar "error", así que se usa
-// un timeout: si "load" no llega a tiempo, se asume bloqueado.
+// Video embed fallback — el link de respaldo está visible por defecto en el HTML.
+// Bloqueadores como Brave Shields o uBlock cancelan el request del iframe pero
+// igual disparan "load" (queda navegando a "about:blank"), así que ese evento
+// por sí solo no sirve para saber si cargó. En vez de eso, al disparar "load"
+// se intenta leer contentDocument: si es accesible, el iframe nunca salió de
+// about:blank (bloqueado); si el acceso lanza una excepción cross-origin, sí
+// navegó de verdad a linkedin.com y ahí sí se oculta el respaldo.
 const videoFrame = document.getElementById('video-embed-frame');
 const videoFallback = document.getElementById('video-embed-fallback');
 
 if (videoFrame && videoFallback) {
-  let videoLoaded = false;
-
   videoFrame.addEventListener('load', () => {
-    videoLoaded = true;
+    let blocked = true;
+    try {
+      blocked = Boolean(videoFrame.contentDocument);
+    } catch (e) {
+      blocked = false;
+    }
+    if (!blocked) videoFallback.hidden = true;
   });
-
-  videoFrame.addEventListener('error', () => {
-    videoFallback.hidden = false;
-  });
-
-  setTimeout(() => {
-    if (!videoLoaded) videoFallback.hidden = false;
-  }, 3000);
 }
