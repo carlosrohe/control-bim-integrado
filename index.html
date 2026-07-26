@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Control BIM integrado — Un solo modelo, un solo dato, cero desfases</title>
+  <meta name="description" content="Sistema de control BIM integrado que conecta modelo, presupuesto, cronograma y avance de obra en una sola fuente de verdad." />
+
+  <!-- Open Graph — og:url pendiente hasta tener el dominio de GitHub Pages -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Control BIM integrado" />
+  <meta property="og:description" content="Un modelo BIM. Un solo dato verificado. Cero desfases entre obra y oficina." />
+  <meta property="og:image" content="https://carlosrohe.github.io/control-bim-integrado/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://carlosrohe.github.io/control-bim-integrado/" />
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <header class="site-header" id="top">
+    <nav class="nav" aria-label="Navegación principal">
+      <a class="nav__mark" href="#inicio" aria-label="Ir a inicio">
+        <span class="nav__mark-glyph" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 2L25 8V20L14 26L3 20V8L14 2Z" stroke="#C97C4B" stroke-width="1.5"/>
+            <path d="M14 2V14M14 14L25 8M14 14L3 8M14 14V26" stroke="#C97C4B" stroke-width="1.5" stroke-opacity="0.55"/>
+          </svg>
+        </span>
+        <span class="nav__mark-text">control bim</span>
+      </a>
+
+      <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav__menu" id="navMenu">
+        <li><a href="#inicio" class="nav__link is-active" data-nav-link>Inicio</a></li>
+        <li><a href="#sistema" class="nav__link" data-nav-link>El sistema</a></li>
+        <li><a href="#caso-estudio" class="nav__link" data-nav-link>Caso de estudio</a></li>
+        <li><a href="#para-quien" class="nav__link" data-nav-link>Para quién es esto</a></li>
+        <li><a href="#contacto" class="nav__link nav__link--cta" data-nav-link>Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ============ INICIO ============ -->
+    <section class="hero" id="inicio">
+      <div class="hero__bg" aria-hidden="true">
+        <svg class="hero__grid" width="100%" height="100%" preserveAspectRatio="none">
+          <defs>
+            <pattern id="gridPattern" width="48" height="48" patternUnits="userSpaceOnUse">
+              <path d="M 48 0 L 0 0 0 48" fill="none" stroke="rgba(201,124,75,0.08)" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#gridPattern)" />
+        </svg>
+      </div>
+
+      <div class="hero__content container">
+        <p class="eyebrow">Modelo · Presupuesto · Cronograma · Avance</p>
+
+        <h1 class="hero__title">
+          Un modelo BIM.<br>
+          Un solo dato verificado.<br>
+          <span class="hero__title-accent">Cero desfases entre obra y oficina.</span>
+        </h1>
+
+        <p class="hero__subtitle">
+          Sistema de control BIM integrado que conecta el modelo, el presupuesto,
+          el cronograma y el avance real de obra en una sola fuente de verdad —
+          sin hojas de cálculo sueltas ni reportes que ya nacen desactualizados.
+        </p>
+
+        <div class="hero__actions">
+          <a href="#sistema" class="btn btn--primary">
+            Ver cómo funciona
+          </a>
+          <a href="#contacto" class="btn btn--ghost">
+            Agendar una demo
+          </a>
+        </div>
+
+        <dl class="metric-grid metric-grid--narrow">
+          <div class="metric">
+            <dt class="metric__label">Ahorro en decisión de cimentación</dt>
+            <dd class="metric__value metric__value--copper">$132,450 <span class="metric__unit">MXN</span></dd>
+          </div>
+          <div class="metric">
+            <dt class="metric__label">Zapatas validadas Revit = OPUS</dt>
+            <dd class="metric__value metric__value--verified">38</dd>
+          </div>
+          <div class="metric">
+            <dt class="metric__label">Conceptos auditados</dt>
+            <dd class="metric__value">20</dd>
+          </div>
+        </dl>
+      </div>
+
+      <a href="#sistema" class="hero__scroll-cue" aria-label="Bajar a la siguiente sección">
+        <span class="hero__scroll-cue-line" aria-hidden="true"></span>
+        <span class="hero__scroll-cue-text">scroll</span>
+      </a>
+    </section>
+
+    <!-- ============ EL SISTEMA ============ -->
+    <section class="section" id="sistema">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-head__title">El sistema</h2>
+          <p class="section-head__subtitle">Cinco capas conectadas, tres niveles de capacidad.</p>
+        </div>
+
+        <div class="section-block">
+          <p class="section__kicker">Las cinco capas</p>
+          <div class="stack-grid">
+            <div class="stack-cell">
+              <div class="stack-cell__n">01</div>
+              <div class="stack-cell__title">Modelo</div>
+              <div class="stack-cell__desc">Revit + Dynamo — fuente de datos del proyecto</div>
+            </div>
+            <div class="stack-cell">
+              <div class="stack-cell__n">02</div>
+              <div class="stack-cell__title">Presupuesto</div>
+              <div class="stack-cell__desc">OPUS + SQL LocalDB — control de costo por partida</div>
+            </div>
+            <div class="stack-cell">
+              <div class="stack-cell__n">03</div>
+              <div class="stack-cell__title">Programación</div>
+              <div class="stack-cell__desc">MS Project — cronograma y avance por jornada</div>
+            </div>
+            <div class="stack-cell">
+              <div class="stack-cell__n">04</div>
+              <div class="stack-cell__title">Integración</div>
+              <div class="stack-cell__desc">MCP + REST API (Node.js) — conexión entre capas en tiempo real</div>
+            </div>
+            <div class="stack-cell">
+              <div class="stack-cell__n">05</div>
+              <div class="stack-cell__title">Visualización</div>
+              <div class="stack-cell__desc">Power BI — dashboard de decisión para la dirección</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <p class="section__kicker">Tres niveles de capacidad</p>
+          <div class="levels">
+            <div class="level">
+              <div class="level__dot"></div>
+              <div class="level__head">
+                <h3 class="level__title">Detección</h3>
+                <span class="level__tag">Disponible</span>
+              </div>
+              <p class="level__body">
+                Auditoría cruzada continua entre modelo, presupuesto y avance (2+ fuentes), con corrección.
+              </p>
+            </div>
+
+            <div class="level">
+              <div class="level__dot"></div>
+              <div class="level__head">
+                <h3 class="level__title">Alerta por impacto</h3>
+                <span class="level__tag">Disponible</span>
+              </div>
+              <p class="level__body">
+                Semáforo que cruza avance físico real contra programa y contra presupuesto ejercido, con alertas
+                específicas por partida. Habla directo al director de proyecto, no solo al BIM manager.
+              </p>
+            </div>
+
+            <div class="level">
+              <div class="level__dot level__dot--pending"></div>
+              <div class="level__head">
+                <h3 class="level__title">Anticipación</h3>
+                <span class="level__tag level__tag--pending">En desarrollo</span>
+              </div>
+              <p class="level__body">
+                Proyección de tendencia sobre las series de avance, antes de que la desviación ya ocurrida se
+                refleje en el semáforo. En desarrollo — hoja de ruta visible, no se ofrece todavía como servicio activo.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CASO DE ESTUDIO ============ -->
+    <section class="section" id="caso-estudio">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-head__title">Caso de estudio</h2>
+          <p class="section-head__subtitle">Proyecto Piloto 2026 — Cimentación, Eje 1 Tramo A-G.</p>
+        </div>
+
+        <div class="section-block">
+          <p class="section__kicker">Decisión documentada</p>
+          <div class="figure">
+            <div class="figure__value">$132,450</div>
+            <p class="figure__label">MXN ahorrados al sustituir el sistema de cimentación antes de romper terreno.</p>
+          </div>
+          <div class="compare">
+            <div class="compare-card compare-card--out">
+              <p class="compare-card__label">Zapatas corridas (diseño original)</p>
+              <p class="compare-card__value compare-card__value--strike">$801,196</p>
+            </div>
+            <div class="compare-card compare-card--in">
+              <p class="compare-card__label">Zapatas aisladas + contratrabes de liga</p>
+              <p class="compare-card__value compare-card__value--win">$668,746</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <p class="section__kicker">Bitácora de auditoría — última sesión</p>
+          <div class="levels">
+            <div class="level">
+              <div class="level__dot"></div>
+              <div class="level__head">
+                <h3 class="level__title">Validación cruzada de cimentación</h3>
+                <span class="level__tag">Confirmado</span>
+              </div>
+              <p class="level__body">
+                38 zapatas en Revit coinciden con OPUS, incluyendo detalle de acero de refuerzo.
+              </p>
+            </div>
+
+            <div class="level">
+              <div class="level__dot"></div>
+              <div class="level__head">
+                <h3 class="level__title">Corrección de estado de compras</h3>
+                <span class="level__tag">Confirmado</span>
+              </div>
+              <p class="level__body">
+                5 órdenes marcadas como pendientes ya estaban entregadas en campo — corregido en el registro.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <p class="section__kicker">Alcance de esta auditoría</p>
+          <div class="metric-grid metric-grid--wide">
+            <div class="metric">
+              <p class="metric__label">Conceptos auditados</p>
+              <p class="metric__value">20</p>
+            </div>
+            <div class="metric">
+              <p class="metric__label">Presupuesto activo (OPUS)</p>
+              <p class="metric__value metric__value--copper">$652,292 <span class="metric__unit">MXN</span></p>
+            </div>
+            <div class="metric">
+              <p class="metric__label">Fuentes cruzadas por sesión</p>
+              <p class="metric__value">4</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PARA QUIÉN ES ESTO ============ -->
+    <section class="section" id="para-quien">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-head__title">Para quién es esto</h2>
+          <p class="section-head__subtitle">No es para cualquier constructora — es para equipos con un problema específico.</p>
+        </div>
+
+        <div class="checklist">
+          <div class="checklist__item">
+            <span class="checklist__mark" aria-hidden="true">✓</span>
+            <p class="checklist__text">Tienes proyectos activos de +$50M MXN en ejecución.</p>
+          </div>
+          <div class="checklist__item">
+            <span class="checklist__mark" aria-hidden="true">✓</span>
+            <p class="checklist__text">Tu equipo de gestión es de 3 a 10 personas — director, gerente de proyecto, residente, administrador.</p>
+          </div>
+          <div class="checklist__item">
+            <span class="checklist__mark" aria-hidden="true">✓</span>
+            <p class="checklist__text">Usas OPUS, Neodata, MS Project, o cualquier sistema que exporte a Excel.</p>
+          </div>
+          <div class="checklist__item">
+            <span class="checklist__mark" aria-hidden="true">✓</span>
+            <p class="checklist__text">No cuentas con un equipo BIM interno con capacidades equivalentes.</p>
+          </div>
+          <div class="checklist__item">
+            <span class="checklist__mark" aria-hidden="true">✓</span>
+            <p class="checklist__text">La visibilidad del avance real es crítica para tu operación.</p>
+          </div>
+        </div>
+
+        <p class="section-outro">
+          Si esto describe tu operación, hablemos de tu proyecto activo como caso de referencia.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ CONTACTO ============ -->
+    <section class="section" id="contacto">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-head__title">Contacto</h2>
+          <p class="section-head__subtitle">Hablemos de tu proyecto activo</p>
+        </div>
+
+        <p class="contacto__body">
+          Si tienes un proyecto activo donde la visibilidad del avance real es crítica, agenda una conversación.
+          La primera sesión es para entender tu operación, no para venderte nada.
+        </p>
+
+        <div class="contacto__cta">
+          <a
+            href="mailto:carlosrohearquitecto@gmail.com?subject=Conversaci%C3%B3n%20sobre%20control%20BIM%20integrado"
+            class="btn btn--primary"
+          >
+            Agendar una conversación
+          </a>
+        </div>
+
+        <p class="contacto__location">Morelia, Michoacán, México</p>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
