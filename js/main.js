@@ -37,34 +37,39 @@ const observer = new IntersectionObserver(
 
 sections.forEach((section) => observer.observe(section));
 
-// Video embed fallback — el link de respaldo vive fuera de .video-embed y está
-// visible por defecto en el HTML (ver comentario junto al markup). Solo se
-// oculta si se confirma una carga real, y esa confirmación se intenta por dos
-// vías independientes porque ningún evento es 100% confiable con bloqueadores:
-//
-// 1) Evento "load": algunos bloqueadores cancelan el request pero igual
-//    disparan "load" (el iframe se queda en about:blank), así que el evento
-//    por sí solo no basta — se revisa contentDocument para distinguirlo.
-// 2) Timeout fijo de 3s: cubre el caso donde el bloqueador cancela la petición
-//    sin disparar "load" en absoluto. Como el respaldo ya es visible por
-//    defecto, este timeout no "muestra" nada — solo vuelve a intentar la
-//    misma verificación por si la carga real ya ocurrió mientras tanto.
-const videoFrame = document.getElementById('video-embed-frame');
+// Video embed — clic para cargar. No se hace ninguna petición a linkedin.com
+// hasta que el usuario haga clic en la miniatura, así que un bloqueador no
+// tiene nada que interceptar durante la carga normal de la página. El
+// fallback solo puede ser relevante después del clic (si el iframe real
+// también termina bloqueado), y se detecta igual que antes: contentDocument
+// accesible = se quedó en about:blank = bloqueado.
+const videoTrigger = document.getElementById('video-embed-trigger');
 const videoFallback = document.getElementById('video-embed-fallback');
 
-if (videoFrame && videoFallback) {
-  const hideFallbackIfReallyLoaded = () => {
-    let blocked = true;
-    try {
-      // contentDocument accesible = sigue en about:blank = bloqueado.
-      // Acceso que lanza excepción cross-origin = navegó de verdad = cargó.
-      blocked = Boolean(videoFrame.contentDocument);
-    } catch (e) {
-      blocked = false;
-    }
-    if (!blocked) videoFallback.hidden = true;
-  };
+if (videoTrigger && videoFallback) {
+  videoTrigger.addEventListener('click', () => {
+    const embedSrc = videoTrigger.getAttribute('data-embed-src');
 
-  videoFrame.addEventListener('load', hideFallbackIfReallyLoaded);
-  setTimeout(hideFallbackIfReallyLoaded, 3000);
+    const iframe = document.createElement('iframe');
+    iframe.className = 'video-embed__frame';
+    iframe.title = 'Publicación integrada';
+    iframe.setAttribute('frameborder', '0');
+    iframe.allowFullscreen = true;
+    iframe.src = embedSrc;
+
+    videoTrigger.replaceWith(iframe);
+
+    const checkRealLoad = () => {
+      let blocked = true;
+      try {
+        blocked = Boolean(iframe.contentDocument);
+      } catch (e) {
+        blocked = false;
+      }
+      if (blocked) videoFallback.hidden = false;
+    };
+
+    iframe.addEventListener('load', checkRealLoad);
+    setTimeout(checkRealLoad, 3000);
+  });
 }

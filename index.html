@@ -247,22 +247,28 @@
 
         <div class="section-block">
           <p class="section__kicker">Sesión de auditoría en video</p>
-          <div class="video-embed">
-            <iframe
-              id="video-embed-frame"
-              src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7480696826787143680?compact=1"
-              frameborder="0"
-              allowfullscreen
-              title="Publicación integrada"
-            ></iframe>
-          </div>
           <!--
-            Deliberadamente FUERA de .video-embed: algunos bloqueadores ocultan
-            todo el contenedor padre de un iframe bloqueado (no solo el iframe),
-            para no dejar cajas vacías. Si este párrafo viviera dentro de ese
-            contenedor, desaparecería con él aunque su propio "hidden" sea false.
+            Clic para cargar: no hay ninguna petición a linkedin.com hasta que
+            el usuario haga clic, así que no hay nada que un bloqueador pueda
+            interceptar en la carga normal de la página.
           -->
-          <p class="video-embed__fallback" id="video-embed-fallback">
+          <div class="video-embed">
+            <button
+              type="button"
+              class="video-embed__trigger"
+              id="video-embed-trigger"
+              data-embed-src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7480696826787143680?compact=1"
+              aria-label="Reproducir: Sesión de auditoría en video (se carga desde LinkedIn)"
+            >
+              <img src="assets/img/video-thumbnail.jpg" alt="" class="video-embed__thumb" />
+              <span class="video-embed__play" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                  <path d="M8 5.5v13l11-6.5z" fill="#181B1E" />
+                </svg>
+              </span>
+            </button>
+          </div>
+          <p class="video-embed__fallback" id="video-embed-fallback" hidden>
             ¿No ves el video?
             <a
               href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7480696826787143680/"

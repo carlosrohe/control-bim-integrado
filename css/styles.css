@@ -516,16 +516,57 @@ body {
 }
 
 /* ==========================================================================
-   Video embed — LinkedIn native embed, responsive wrapper
+   Video embed — clic para cargar. Sin llamadas a linkedin.com hasta el clic.
    ========================================================================== */
 .video-embed {
   max-width: 504px;
+  aspect-ratio: 504 / 399;
+  position: relative;
+  background: var(--color-surface);
 }
 
-.video-embed iframe {
+.video-embed__trigger {
   display: block;
   width: 100%;
-  aspect-ratio: 504 / 399;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.video-embed__thumb {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-embed__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--color-copper);
+  transition: transform 0.15s ease, background-color 0.2s ease;
+}
+
+.video-embed__trigger:hover .video-embed__play {
+  background: #d38f63;
+  transform: translate(-50%, -50%) scale(1.06);
+}
+
+.video-embed__frame {
+  display: block;
+  width: 100%;
+  height: 100%;
   border: 0;
 }
 
