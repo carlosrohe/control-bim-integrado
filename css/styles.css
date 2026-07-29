@@ -733,3 +733,86 @@ body {
 
   .level__head { flex-direction: column; align-items: flex-start; gap: 8px; }
 }
+
+/* ============ TIMELINE — ciclo de vida continuo ============ */
+.timeline__intro {
+  font-family: var(--font-body);
+  color: var(--color-text-dim);
+  max-width: 62ch;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+}
+
+.timeline {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  padding-top: 0.75rem;
+}
+
+.timeline__track {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, var(--color-copper), var(--color-verify));
+  opacity: 0.55;
+}
+
+.timeline__item {
+  position: relative;
+  padding-top: 1.5rem;
+}
+
+.timeline__dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--color-copper);
+  border: 2px solid var(--color-graphite);
+  box-shadow: 0 0 0 1px var(--color-copper);
+}
+
+.timeline__phase {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  color: var(--color-text);
+  margin-bottom: 0.35rem;
+}
+
+.timeline__desc {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--color-text-faint);
+}
+
+@media (max-width: 720px) {
+  .timeline {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+  .timeline__track {
+    top: 0;
+    bottom: 0;
+    left: 5px;
+    right: auto;
+    width: 1px;
+    height: auto;
+    background: linear-gradient(to bottom, var(--color-copper), var(--color-verify));
+  }
+  .timeline__item {
+    padding-top: 0;
+    padding-left: 1.75rem;
+  }
+  .timeline__dot {
+    top: 3px;
+    left: 0;
+  }
+}
